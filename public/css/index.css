@@ -69,7 +69,7 @@
 
 .index__main__aside__section--cursos {
     display: flex;
-    background-color: #ffffff;
+    
     flex-wrap: wrap;
     flex-direction: column;
 }
@@ -77,8 +77,8 @@
 .index__main__aside__section--cursos article {
     display: flex;
     align-items: center;
-   /*  width: 48%; */
-    margin: 5px;
+    margin: 1px;
+    background-color: #ffffff;
 }
 
 .index__main__aside__section--cursos article h5 {
@@ -156,10 +156,11 @@
 
     .index__main__aside__section--cursos {
         flex-direction: row;
+        justify-content: space-between;
     }
     
     .index__main__aside__section--cursos article {
-        width: 48%;
+        width: 49.7%;
     }
 
     .index__main__asid__section__div--publicidad img {
