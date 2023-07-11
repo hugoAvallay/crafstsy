@@ -1,0 +1,211 @@
+/* Header */
+.index_header {
+    background-color: #ef4c27;
+    padding: 15px;
+}
+.index_header--top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.index_header--top button {
+    background: none;
+    border: none;
+    color: #ffffff;
+    border: solid 1px #ffffff;
+    padding: 8px;
+    border-radius: 3px;
+}
+
+.index_header__navegacion {
+    display: none;
+}
+
+
+/* MAIN */
+.index_main__seccion-ventas {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    background-color: #ffffff;
+}
+
+.index_main__seccion-ventas {
+    margin: 10px 0;
+    padding: 5px;
+}
+
+.index_main__articulo {
+    margin: 5px 0;
+}
+
+
+.index_main__articulo--img{
+    width: 100%;
+    flex-wrap: nowrap;
+}
+
+.index_main__articulo-descripcion h3 {
+    margin: 10px 0;
+}
+
+.index_main__articulo-descripcion a {
+    display: inline-block;
+    background-color: #ef4c27;
+    margin: 10px 0 10px;
+    padding: 10px 6px;
+}
+
+/* ASIDE */
+
+.index__main__aside__section h2 {
+    background-color: #ffffff;
+    font-weight: 900;
+    margin: 25px 0 15px;
+    padding: 5px;
+}
+
+
+.index__main__aside__section--cursos {
+    display: flex;
+    background-color: #ffffff;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.index__main__aside__section--cursos article {
+    display: flex;
+    align-items: center;
+   /*  width: 48%; */
+    margin: 5px;
+}
+
+.index__main__aside__section--cursos article h5 {
+    margin-left: 10px;
+}
+
+.index__main__aside___section-publicidad h2 {
+    background-color: #ffffff;
+    font-weight: 900;
+    margin: 25px 0 10px;
+    padding: 5px;
+}
+
+.index__main__asid__section__div--publicidad {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    background-color: #ffffff;
+}
+
+.index__main__asid__section__div--publicidad img {
+    width: 100%;
+}
+
+@media (min-width:768px) {
+
+    /* HEADER */
+    .index_header {
+        display: flex;
+        align-items:center;
+
+        
+    }
+    .index_header__navegacion {
+        flex-grow: 1; /* de este forma este selector que es hijo del index_header ocupara el espacio restante */
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 0 10px;
+    }
+
+    .index_header__navegacion-sitio{
+        display: flex;
+        gap: 8px;
+        margin: 10px;
+    }
+
+    .index_header__navegacion-registro{
+        display: flex;
+        gap: 8px;
+    }
+
+
+    .index_header--top button {
+        display: none;
+    }
+
+    /* MAIN */
+    .index_main__seccion-ventas {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .index_main__articulo {
+        width: 49%;
+    }
+    
+    
+    .index_main__articulo--img{
+        width: 100%;
+        flex-wrap: nowrap;
+    }
+
+    /* ASIDE */
+
+    .index__main__aside__section--cursos {
+        flex-direction: row;
+    }
+    
+    .index__main__aside__section--cursos article {
+        width: 48%;
+    }
+
+    .index__main__asid__section__div--publicidad img {
+        width: 50%;
+        padding: 5px;
+    }
+
+}
+
+
+
+@media (min-width:1024px) {
+
+    /* Header */
+
+    /* MAIN */
+
+    .index_main {
+        display: flex;
+        justify-content: space-between;
+        align-items: start;
+    }
+
+    .index_main__seccion-ventas {
+        width: 70%;
+    }
+
+    .index_main__articulo {
+        width: 48%;
+    }
+    /* ASIDE */
+
+    .index__main__aside {
+        width: 27%;
+    }
+
+    .index__main__aside__section h2 {
+        margin: 10px 0 15px;
+    }
+    .index__main__aside__section--cursos article {
+        width: 100%;
+    }
+
+    .index__main__asid__section__div--publicidad img {
+        width: 100%;
+    }
+
+
+}
