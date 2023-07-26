@@ -110,7 +110,6 @@
         display: flex;
         align-items:center;
 
-        
     }
     .index_header__navegacion {
         flex-grow: 1; /* de este forma este selector que es hijo del index_header ocupara el espacio restante */
@@ -137,6 +136,11 @@
     }
 
     /* MAIN */
+    .index__main {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
     .index_main__seccion-ventas {
         display: flex;
         justify-content: space-between;
