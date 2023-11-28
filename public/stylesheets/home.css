@@ -5,8 +5,6 @@
 
 .home__box {
   margin-top: 30px;
-  
-  
 }
 
 .home__main {
@@ -154,7 +152,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    margin-bottom: 150px;
   }
 
   .home__banner {

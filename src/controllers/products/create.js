@@ -1,7 +1,7 @@
-const {existsSync, unlinkSync} = require('fs');
 const {validationResult} = require('express-validator');
-const { readJSON, writeJSON } = require("../../data");
-const Product = require("../../data/Product");
+const {existsSync, unlinkSync}= require('fs')
+const db = require('../../database/models')
+
 
 module.exports = (req, res) => {
     
@@ -9,36 +9,64 @@ module.exports = (req, res) => {
 
     if(errors.isEmpty()){
 
-      const products = readJSON("products.json");
-      const data = {
-        ...req.body,
-        image : req.file ? req.file.filename : null
-      }
-  
-      let newProduct = new Product(data);
-      products.push(newProduct);
-  
-      writeJSON(products, 'products.json');
-  
-      return res.redirect('/admin');
+      const {name, price, discount, image, description, brand /*viene el id de marca */, section /* viene el id de section */}= req.body;
+
+      db.Product.create({
+        name: name.trim(),
+        price,
+        discount: discount || 0,
+        description: description.trim(),
+        brandId: brand,
+        sectionId: section
+      })
+
+      .then(product => {
+        if(req.files.length){
+          const images = req.files.map((file,index) => {
+            return {
+              file: file.filename,
+              main : index === 0 ? true : false,
+              productId : product.id // a que productof pertenece esa imagen
+            }
+          })
+
+          db.Image.bulkCreate(images, {//crea varios registros a la vez el bulkCreate
+            validate : true
+          }).then(response => console.log(response))
+        }
+        return res.redirect('/admin');
+      })
+      .catch(error => console.log(error))
+
 
     }else {
 
-      if(req.file){
-        existsSync('./public/images/' + req.file.filename) && unlinkSync('./public/images/' + req.file.filename)
+      if(req.files.length){
+        req.files.forEach(file => {
+          existsSync('./public/images/' + file.filename) && unlinkSync('./public/images/' + file.filename)
+        });
+
+        
       }
 
-      const brands = readJSON("brands.json");
-
-      return res.render("productAdd", {
-        brands: brands.sort((a, b) =>
-          a.name > b.name ? 1 : a.name < b.name ? -1 : 0
-        ),
-        errors : errors.mapped(),
-        old : req.body
+      const brands = db.Brand.findAll({
+        order: ['name']
       });
-    }
-
-
+      const sections = db.Section.findAll({
+        order: ['name']
+      })
   
-  }
+      Promise.all([brands,sections])
+        .then(([brands,sections])=> {
+          return res.render("productAdd",{
+            brands,
+            sections,
+            errors : errors.mapped(),
+            old : req.body
+          })
+  
+        })
+        .catch(error => console.log(error))
+      }
+}
+

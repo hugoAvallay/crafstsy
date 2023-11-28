@@ -6,8 +6,6 @@ const logger = require('morgan');
 const methodOverride = require('method-override');
 const session = require('express-session');
 
-require('dotenv').config()
-
 const localsCheck = require('./middlewares/localsCheck');
 
 const indexRouter = require('./routes/index');

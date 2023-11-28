@@ -1,5 +1,5 @@
-/* const { check} = require("express-validator");
-const db = require('../database/models');
+const { check } = require("express-validator");
+const db = require('../database/models')
 
 module.exports = [
   check("name")
@@ -8,7 +8,7 @@ module.exports = [
     })
     .withMessage("Debe tener como mínimo dos letras")
     .bail()
-    .isAlpha('es-ES',{ignore: ' '})
+    .isAlpha('es-ES', {ignore: ' '})
     .withMessage("Solo se permiten caracteres alfabéticos"),
   check("surname")
     .isLength({
@@ -16,6 +16,7 @@ module.exports = [
     })
     .withMessage("Debe tener como mínimo dos letras")
     .bail()
-    .isAlpha('es-ES',{ignore: ' '})
+    .isAlpha()
     .withMessage("Solo se permiten caracteres alfabéticos"),
-]; */
+  
+];
