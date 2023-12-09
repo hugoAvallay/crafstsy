@@ -12,6 +12,7 @@ const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productsRouter = require('./routes/products');
 const cookieCheck = require('./middlewares/cookieCheck');
+const apisRouter = require('./routes/apis')
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use(localsCheck);
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/products',productsRouter);
+app.use('/apis', apisRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
